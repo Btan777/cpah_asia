@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPAH Asia - Centre for Preventive and Anti-Aging Health</title>
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --secondary-blue: #3b82f6;
+            --accent-gold: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .region-badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--primary-blue);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: var(--secondary-blue);
+            color: var(--white);
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent-gold);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .content-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-blue);
+        }
+
+        .content-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .email-link {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .email-link:hover {
+            text-decoration: underline;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent-gold), #fbbf24);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation */
+        .section {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">CPAH ASIA</h1>
+                <p class="tagline">Centre for Preventive and Anti-Aging Health</p>
+                <div class="region-badge">Asia-Pacific Region</div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="#about">About CPAH</a></li>
+                    <li><a href="#research">Research Areas</a></li>
+                    <li><a href="#collaborate">Collaborate</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="about" class="section">
+            <h2 class="section-title">Introducing CPAH: Empowering Science for All</h2>
+            <p style="font-size: 1.1rem; text-align: center; margin-bottom: 2rem; color: var(--text-light);">
+                Democratizing science and leaving an enduring legacy for humanity
+            </p>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>🔬 Our Mission</h3>
+                    <p>At the heart of the Heraclitus Research and Analysis Center (CPAH) lies a noble mission – to democratize science and leave an enduring legacy for humanity. Founded by a group of talented individuals, CPAH is a non-profit institution dedicated to nurturing science in a collaborative and inclusive manner.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>🤝 Collaborative Approach</h3>
+                    <p>By uniting mathematicians, physicists, and experts from diverse fields, CPAH aspires to form a cohesive team with the ambition of becoming a leading research hub globally. We bridge the gap between academic realms and independent scientific endeavors.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>💡 Credibility Over Prestige</h3>
+                    <p>Unlike traditional scientific institutions, CPAH prioritizes credibility over the allure of prestigious journals. Our ethos revolves around capturing ideas, concepts, and discoveries that have the potential to reshape human understanding.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>🌟 Inclusive Platform</h3>
+                    <p>CPAH serves as a haven for self-taught individuals and those outside conventional academic settings, offering them a platform to document their scientific contributions. We champion the notion that groundbreaking innovations need not be confined to renowned publications to make a significant impact.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="research" class="section">
+            <h2 class="section-title">Research Areas</h2>
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>🧬 Longevity & Anti-Aging Research</h3>
+                    <p>Investigating the biological mechanisms of aging, preventive health strategies, and interventions that promote healthy longevity across diverse Asian populations.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>🧠 Cognitive Health & Neuroplasticity</h3>
+                    <p>Exploring brain health, memory preservation, and cognitive enhancement strategies throughout the aging process, with focus on Asian demographic studies.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>📊 Computational Health Analytics</h3>
+                    <p>Applying advanced mathematical modeling and data analysis to health outcomes, including epidemiological modeling and predictive health analytics.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>🌿 Traditional Medicine Integration</h3>
+                    <p>Scientific validation of traditional Asian health practices and their integration with modern preventive medicine approaches.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>⚛️ Quantum Biology Applications</h3>
+                    <p>Investigating quantum mechanical effects in biological systems and their potential applications in health optimization and disease prevention.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>🏥 Health Policy & Social Systems</h3>
+                    <p>Research on health policy effectiveness, aging society challenges, and social determinants of health across Asian contexts.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="contact-info">
+            <h3>📧 Contact CPAH Asia</h3>
+            <p>For research inquiries, collaboration proposals, and general information:</p>
+            <a href="mailto:asia@cpah.eu" class="email-link">asia@cpah.eu</a>
+            <p style="margin-top: 1rem; opacity: 0.9;">Director: Dr. Bryne Tan Jin-Yon</p>
+        </div>
+
+        <section id="collaborate" class="section">
+            <h2 class="section-title">Calling for Collaborators</h2>
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <p style="font-size: 1.2rem; color: var(--text-light); max-width: 800px; margin: 0 auto;">
+                    CPAH Asia seeks passionate researchers, innovators, and thought leaders to join our mission of democratizing science and advancing human health.
+                </p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>🎓 Academic Researchers</h3>
+                    <p>University faculty, postdocs, and graduate students interested in collaborative research projects, cross-institutional partnerships, and knowledge exchange programs.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>🔬 Independent Scientists</h3>
+                    <p>Self-taught researchers, citizen scientists, and independent investigators with novel ideas and unconventional approaches to health and longevity research.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>🏥 Medical Professionals</h3>
+                    <p>Physicians, specialists, and healthcare practitioners interested in preventive medicine research and evidence-based health optimization strategies.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>💻 Data Scientists & Technologists</h3>
+                    <p>Computational experts, AI researchers, and technology innovators who can contribute to our advanced analytics and modeling capabilities.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>📚 Science Communicators</h3>
+                    <p>Writers, educators, and media professionals passionate about making complex scientific concepts accessible to diverse audiences across Asia.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>🌏 Policy & Implementation Experts</h3>
+                    <p>Public health specialists, policy researchers, and implementation scientists focused on translating research into real-world health solutions.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="cta-section">
+            <h2>Ready to Shape the Future of Health?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">
+                Join CPAH Asia in revolutionizing preventive health and anti-aging research across the Asia-Pacific region.
+            </p>
+            <a href="mailto:asia@cpah.eu?subject=Collaboration Inquiry" class="cta-button">
+                Start Your Collaboration Journey
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CPAH Asia - Centre for Preventive and Anti-Aging Health. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; opacity: 0.8;">Part of the global CPAH research network</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.backdropFilter = 'blur(10px)';
+            } else {
+                nav.style.background = 'var(--white)';
+                nav.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
